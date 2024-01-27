@@ -1,7 +1,9 @@
 import React ,{useState,useRef}from 'react'
 import Header from './Header'
 import { CONSTANTS } from '../utils/Constants'
-import { ValidateFormData } from '../utils/Validate'
+import { ValidateFormData } from '../utils/Validate';
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../utils/firebase';
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [validationError,setValidationError] = useState("")
@@ -11,8 +13,38 @@ const Login = () => {
   const name = useRef(null)
 
   const handleSubmit =()=>{
-    const res = ValidateFormData(email.current.value , password.current.value)
-   setValidationError(res)
+    const message = ValidateFormData(email.current.value , password.current.value)
+   setValidationError(message)
+    if(message) return
+    if(!isSignInForm){
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value)
+        .then((userCredential) => { 
+          const user = userCredential.user;
+          console.log(user)
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+
+          setValidationError(errorCode + errorMessage)
+          // ..
+        });
+    }else{
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user)
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setValidationError(errorCode + errorMessage)
+      });
+    }
   }
 
   const handleSignUp =()=>{
