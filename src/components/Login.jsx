@@ -31,7 +31,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value, 
-            photoURL: "https://avatars.githubusercontent.com/u/110050419?v=4"
+            photoURL: CONSTANTS.PHOTO_URL
           }).then(() => {
             const{uid,email,displayName,photoURL} = auth.currentUser;
             dispatch(addUser({
@@ -41,7 +41,7 @@ const Login = () => {
               photoURL:photoURL
             }))
 
-            navigate('/browse')
+           // navigate('/browse')
           }).catch((error) => {
            setValidationError(error.message)
           });
@@ -61,7 +61,7 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user)
-        navigate("/browse")
+       // navigate("/browse")
       })
       .catch((error) => {
         const errorCode = error.code;
