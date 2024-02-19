@@ -7,7 +7,7 @@ const {title,overview}=props
     <h1 className='text-5xl text-white font-bold'>{title}</h1>
     <p className='py-6 text-white text-lg w-1/4'>{overview}</p>
     <div className=''>
-      <button className='bg-white hover:bg-opacity-70 text-black px-12 rounded-lg py-4 text-lg mx-2 font-bold '>🪒   play</button>
+      <button className='bg-white hover:bg-opacity-70 text-black px-12 rounded-lg py-4 text-lg mx-2 font-bold '>🪒   Play</button>
       <button className='bg-gray-500 hover:bg-opacity-70 text-black px-12 rounded-lg py-4 text-lg  mx-2 font-bold '>More Info</button>  
     </div>
     </div>
