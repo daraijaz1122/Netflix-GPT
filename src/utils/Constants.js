@@ -8,4 +8,4 @@ export const SUPPORTED_LANGUAGES =[
     {identfier: "hindi",name: "Hindi"},
     {identfier: "spanish",name: "Spanish"}
 ]
-export const OPENAI_API ="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"
+export const OPENAI_API = import.meta.env.VITE_OPENAI_API

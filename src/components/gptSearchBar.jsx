@@ -44,9 +44,9 @@ const GptSearchBar = () => {
 
 
   return (
-    <div className='pt-[10%] flex justify-center'>
+    <div className='pt-[40%] md:pt-[10%] flex justify-center'>
        
-        <form className='  rounded-lg  w-1/2 bg-black flex'>
+        <form className='  rounded-lg  md:w-1/2 bg-black flex'>
             <input 
             ref={searchText}
             className=' w-9/12 p-4 m-4' type="text" 
